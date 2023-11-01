@@ -81,6 +81,60 @@ spec:
                     description: Namespace for monitoring if it is enabled
                     type: string
                 type: object
+              serverless:
+                description: Enable Serverless for Data Science Clusters
+                properties:
+                  managementState:
+                    default: Removed
+                    enum:
+                    - Managed
+                    - Removed
+                    pattern: ^(Managed|Unmanaged|Force|Removed)$
+                    type: string
+                  serving:
+                    properties:
+                      ingressGateway:
+                        properties:
+                          certificate:
+                            properties:
+                              generate:
+                                default: true
+                                type: boolean
+                              secretName:
+                                default: knative-serving-cert
+                                type: string
+                            type: object
+                        type: object
+                      localGatewayServiceName:
+                        default: knative-local-gateway
+                        type: string
+                      name:
+                        default: knative-serving
+                        type: string
+                      namespace:
+                        default: knative-serving
+                        type: string
+                    type: object
+                type: object
+              serviceMesh:
+                description: Enable Service Mesh for Data Science Clusters
+                properties:
+                  mesh:
+                    description: Mesh holds configuration of Service Mesh used by
+                      Opendatahub.
+                    properties:
+                      name:
+                        default: minimal
+                        description: Name is a name Service Mesh Control Plane. Defaults
+                          to "minimal".
+                        type: string
+                      namespace:
+                        default: istio-system
+                        description: Namespace is a namespace where Service Mesh is
+                          deployed. Defaults to "istio-system".
+                        type: string
+                    type: object
+                type: object
             required:
             - applicationsNamespace
             type: object

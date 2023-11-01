@@ -35,9 +35,17 @@ type DSCInitializationSpec struct {
 	// +operator-sdk:csv:customresourcedefinitions:type=spec,order=2
 	// +optional
 	Monitoring Monitoring `json:"monitoring,omitempty"`
+	// Enable Service Mesh for Data Science Clusters
+	// +operator-sdk:csv:customresourcedefinitions:type=spec,order=3
+	// +optional
+	ServiceMesh ServiceMeshSpec `json:"serviceMesh,omitempty"`
+	// Enable Serverless for Data Science Clusters
+	// +operator-sdk:csv:customresourcedefinitions:type=spec,order=4
+	// +optional
+	Serverless ServerlessSpec `json:"serverless,omitempty"`
 	// Internal development useful field to test customizations.
 	// This is not recommended to be used in production environment.
-	// +operator-sdk:csv:customresourcedefinitions:type=spec,order=3
+	// +operator-sdk:csv:customresourcedefinitions:type=spec,order=5
 	// +optional
 	DevFlags DevFlags `json:"devFlags,omitempty"`
 }

@@ -4,6 +4,11 @@ package datasciencecluster
 //+kubebuilder:rbac:groups="datasciencecluster.opendatahub.io",resources=datascienceclusters/finalizers,verbs=update;patch
 //+kubebuilder:rbac:groups="datasciencecluster.opendatahub.io",resources=datascienceclusters,verbs=get;list;watch;create;update;patch;delete
 
+/* Serverless prerequisite */
+// +kubebuilder:rbac:groups="maistra.io",resources=servicemeshcontrolplanes,verbs=create;get;list;patch;update;use;watch
+// +kubebuilder:rbac:groups="networking.istio.io",resources=gateways,verbs=*
+// +kubebuilder:rbac:groups="operator.knative.dev",resources=knativeservings,verbs=*
+
 /* This is for DSP */
 //+kubebuilder:rbac:groups="datasciencepipelinesapplications.opendatahub.io",resources=datasciencepipelinesapplications/status,verbs=update;patch;get
 //+kubebuilder:rbac:groups="datasciencepipelinesapplications.opendatahub.io",resources=datasciencepipelinesapplications/finalizers,verbs=update;patch
